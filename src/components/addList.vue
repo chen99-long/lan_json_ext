@@ -13,6 +13,7 @@
         <el-table-column prop="zh" label="中文">
           <template slot-scope="scope">
             <el-input
+              @blur="transLate(scope.row)"
               v-model="scope.row.zh"
               placeholder="请输入中文"
             ></el-input>
@@ -60,6 +61,8 @@ import {
   exportObjectToJSONFile,
   updateArray,
 } from "../utils/common";
+import { translateAPI } from "../utils/translate";
+
 export default {
   name: "addList",
   props: ["uploadedFile"],
@@ -119,6 +122,10 @@ export default {
     },
     deleteItem(index) {
       this.languageForm.splice(index, 1);
+    },
+    async transLate(item) {
+      !item.en && (item.en = await translateAPI(item.zh));
+      !item.key && (item.key = item.en.substring(0, 3));
     },
   },
 };

@@ -61,6 +61,7 @@ import {
   exportObjectToJSONFile,
   updateArray,
 } from "../utils/common";
+import { translateAPI } from "../utils/translate";
 export default {
   name: "NewList",
   props: ["uploadedFile"],
@@ -109,8 +110,9 @@ export default {
     deleteItem(index) {
       this.languageForm.splice(index, 1);
     },
-    transLate(item) {
-      console.log(item);
+    async transLate(item) {
+      !item.en && (item.en = await translateAPI(item.zh));
+      !item.key && (item.key = item.en.substring(0, 3));
     },
   },
   watch: {
