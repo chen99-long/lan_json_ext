@@ -13,6 +13,7 @@
         <el-table-column prop="zh" label="中文">
           <template slot-scope="scope">
             <el-input
+              @blur="transLate(scope.row)"
               v-model="scope.row.zh"
               placeholder="请输入中文"
             ></el-input>
@@ -107,6 +108,9 @@ export default {
     },
     deleteItem(index) {
       this.languageForm.splice(index, 1);
+    },
+    transLate(item) {
+      console.log(item);
     },
   },
   watch: {
