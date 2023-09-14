@@ -1,4 +1,16 @@
 # vuepage
+```
+配置的json格式为{
+  "en":{
+    "key1":"xxx",
+    "key2":"xxx",
+  },
+  "zh-CN":{
+    "key1":"xxx",
+    "key2":"xxx",
+  }
+}
+```
 
 ## Project setup
 ```
@@ -19,6 +31,3 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
