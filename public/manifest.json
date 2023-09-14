@@ -1,0 +1,19 @@
+{
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+  },
+  "description": "des",
+  "icons": {},
+  "manifest_version": 3,
+  "name": "语言包配置器",
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "version": "1.0.0"
+}
