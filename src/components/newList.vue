@@ -77,7 +77,9 @@ export default {
       //   return this.$message.error("表单没填完噢");
       // }
       exportObjectToJSONFile(
-        trannformArrToObject(updateArray(this.languageForm)),
+        trannformArrToObject(
+          updateArray(this.languageForm.filter((e) => e.key))
+        ),
         "language.json"
       );
     },
@@ -104,7 +106,11 @@ export default {
     },
     copyJson() {
       this.copy(
-        JSON.stringify(trannformArrToObject(updateArray(this.languageForm)))
+        JSON.stringify(
+          trannformArrToObject(
+            updateArray(this.languageForm.filter((e) => e.key))
+          )
+        )
       );
     },
     deleteItem(index) {
@@ -113,6 +119,14 @@ export default {
     async transLate(item) {
       !item.en && (item.en = await translateAPI(item.zh));
       !item.key && (item.key = item.en.substring(0, 3));
+      if (
+        !this.languageForm.some((e) => {
+          return !(e.zh || e.en || e.key);
+        })
+      ) {
+        console.log("add");
+        this.addNewRow();
+      }
     },
   },
   watch: {
