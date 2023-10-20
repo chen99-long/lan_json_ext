@@ -83,3 +83,21 @@ export function updateArray(arr) {
 
   return arr;
 }
+
+export function combineFirstTwoWords(inputString) {
+  // 使用正则表达式匹配第一个和第二个单词
+  const matches = inputString.match(/\S+/g);
+
+  if (matches) {
+    // 如果有至少一个单词，取前两个单词，如果只有一个单词，也会返回它
+    const firstWord = matches[0];
+    const secondWord = matches[1] || "";
+
+    // 如果第二个单词存在，使用下划线拼接；否则，只返回第一个单词
+    const result = secondWord !== "" ? `${firstWord}_${secondWord}` : firstWord;
+    return result;
+  } else {
+    // 如果没有匹配到单词，返回空字符串
+    return "";
+  }
+}

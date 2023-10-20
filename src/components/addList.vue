@@ -60,6 +60,7 @@ import {
   trannformArrToObject,
   exportObjectToJSONFile,
   updateArray,
+  combineFirstTwoWords,
 } from "../utils/common";
 import { translateAPI } from "../utils/translate";
 
@@ -129,7 +130,7 @@ export default {
     },
     async transLate(item) {
       !item.en && (item.en = await translateAPI(item.zh));
-      !item.key && (item.key = item.en.substring(0, 3));
+      !item.key && (item.key = combineFirstTwoWords(item.en));
       if(!this.languageForm.some(e=>{return !(e.zh || e.en || e.key)})){
         console.log("add");
         this.addNewRow()
