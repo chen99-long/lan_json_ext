@@ -7,7 +7,7 @@
   "description": "des",
   "icons": {},
   "manifest_version": 3,
-  "name": "语言包配置器",
+  "name": "语言包json配置器",
   "host_permissions": [
     "<all_urls>"
   ],
